@@ -1,0 +1,138 @@
+[
+  {
+    "file": "sam21/vision_encoder.onnx",
+    "sha256": "aacf1f7137bb6fffcf6bf166abcfabe28f57a76059254f3fb611c4a64a208119",
+    "bytes": 467440,
+    "url": "https://huggingface.co/onnx-community/sam2.1-hiera-small-ONNX/resolve/a7df49d8de14b9d2e4504d1687b0d568f905fd8d/onnx/vision_encoder.onnx",
+    "upstream": "onnx-community/sam2.1-hiera-small-ONNX",
+    "revision": "a7df49d8de14b9d2e4504d1687b0d568f905fd8d"
+  },
+  {
+    "file": "sam21/vision_encoder.onnx_data",
+    "sha256": "260fd1f0a34e72a3dc79a739e563b4facc0ba75504818b433a1f808e66637456",
+    "bytes": 162476288,
+    "url": "https://huggingface.co/onnx-community/sam2.1-hiera-small-ONNX/resolve/a7df49d8de14b9d2e4504d1687b0d568f905fd8d/onnx/vision_encoder.onnx_data",
+    "upstream": "onnx-community/sam2.1-hiera-small-ONNX",
+    "revision": "a7df49d8de14b9d2e4504d1687b0d568f905fd8d"
+  },
+  {
+    "file": "sam21/prompt_encoder_mask_decoder.onnx",
+    "sha256": "079c59b261f723ff5c6a125e69b0170a957b21c58738c28d2b0394ecd0587d7f",
+    "bytes": 213114,
+    "url": "https://huggingface.co/onnx-community/sam2.1-hiera-small-ONNX/resolve/a7df49d8de14b9d2e4504d1687b0d568f905fd8d/onnx/prompt_encoder_mask_decoder.onnx",
+    "upstream": "onnx-community/sam2.1-hiera-small-ONNX",
+    "revision": "a7df49d8de14b9d2e4504d1687b0d568f905fd8d"
+  },
+  {
+    "file": "sam21/prompt_encoder_mask_decoder.onnx_data",
+    "sha256": "f9e59a584ab8ced21fa812c211bc01084204db1c9e92a5ef4fb3a49972b4e864",
+    "bytes": 20958208,
+    "url": "https://huggingface.co/onnx-community/sam2.1-hiera-small-ONNX/resolve/a7df49d8de14b9d2e4504d1687b0d568f905fd8d/onnx/prompt_encoder_mask_decoder.onnx_data",
+    "upstream": "onnx-community/sam2.1-hiera-small-ONNX",
+    "revision": "a7df49d8de14b9d2e4504d1687b0d568f905fd8d"
+  },
+  {
+    "file": "vitmatte/model.onnx",
+    "sha256": "bf28d2e0be2c073286e88d60ad649d7123da2749a2d99133fd1098d5887e0225",
+    "bytes": 103885865,
+    "url": "https://huggingface.co/Xenova/vitmatte-small-composition-1k/resolve/6bc1297f6140f055a227b6d2cfe8c093281f35d2/onnx/model.onnx",
+    "upstream": "Xenova/vitmatte-small-composition-1k",
+    "revision": "6bc1297f6140f055a227b6d2cfe8c093281f35d2"
+  },
+  {
+    "file": "reference-sam21/config.json",
+    "sha256": "97ff9f65b76d107acda4247885f0a5555d0048850ae3c5f97183df289aaecde9",
+    "bytes": 5698,
+    "url": "https://huggingface.co/facebook/sam2.1-hiera-small/resolve/ee5bba1d82bb8749febdf90f45e84b687142ba03/config.json",
+    "upstream": "facebook/sam2.1-hiera-small",
+    "revision": "ee5bba1d82bb8749febdf90f45e84b687142ba03"
+  },
+  {
+    "file": "reference-sam21/model.safetensors",
+    "sha256": "0a4067b11ce1e23d5229203f11c718a823060d15a4b23fa2372a7d4b77cbbc60",
+    "bytes": 184305280,
+    "url": "https://huggingface.co/facebook/sam2.1-hiera-small/resolve/ee5bba1d82bb8749febdf90f45e84b687142ba03/model.safetensors",
+    "upstream": "facebook/sam2.1-hiera-small",
+    "revision": "ee5bba1d82bb8749febdf90f45e84b687142ba03"
+  },
+  {
+    "file": "reference-sam21/preprocessor_config.json",
+    "sha256": "6ebf229ee259368ce4a8d4f2fe893a72b053023710853e257253939e601f583d",
+    "bytes": 683,
+    "url": "https://huggingface.co/facebook/sam2.1-hiera-small/resolve/ee5bba1d82bb8749febdf90f45e84b687142ba03/preprocessor_config.json",
+    "upstream": "facebook/sam2.1-hiera-small",
+    "revision": "ee5bba1d82bb8749febdf90f45e84b687142ba03"
+  },
+  {
+    "file": "reference-vitmatte/config.json",
+    "sha256": "ae1006f5a83227048b563b2e60709d4203e432b2276949ebef41a8cfeeeaf45f",
+    "bytes": 837,
+    "url": "https://huggingface.co/hustvl/vitmatte-small-composition-1k/resolve/6a58ad7646403c1df626fbd746900aec7361ea1d/config.json",
+    "upstream": "hustvl/vitmatte-small-composition-1k",
+    "revision": "6a58ad7646403c1df626fbd746900aec7361ea1d"
+  },
+  {
+    "file": "reference-vitmatte/model.safetensors",
+    "sha256": "bda9289db1bb6762d978b42d1c62ae3f34daf7497171a347a1d09657efd788cb",
+    "bytes": 103294572,
+    "url": "https://huggingface.co/hustvl/vitmatte-small-composition-1k/resolve/6a58ad7646403c1df626fbd746900aec7361ea1d/model.safetensors",
+    "upstream": "hustvl/vitmatte-small-composition-1k",
+    "revision": "6a58ad7646403c1df626fbd746900aec7361ea1d"
+  },
+  {
+    "file": "reference-vitmatte/preprocessor_config.json",
+    "sha256": "0db558038b96a3f5c97e46d4ec8966fcc479e9aa58a391bca60b5094a5f7fee0",
+    "bytes": 284,
+    "url": "https://huggingface.co/hustvl/vitmatte-small-composition-1k/resolve/6a58ad7646403c1df626fbd746900aec7361ea1d/preprocessor_config.json",
+    "upstream": "hustvl/vitmatte-small-composition-1k",
+    "revision": "6a58ad7646403c1df626fbd746900aec7361ea1d"
+  },
+  {
+    "file": "reference-rfdetr/config.json",
+    "sha256": "b1a1161b3554949eaef16477f9642135ec62b0886f6d6221607dc1a6c548fcb7",
+    "bytes": 5778,
+    "url": "https://huggingface.co/stevenbucaille/rf-detr-seg-small/resolve/4e033cd357acd25ea21c74692dfef20ce75cb38c/config.json",
+    "upstream": "stevenbucaille/rf-detr-seg-small",
+    "revision": "4e033cd357acd25ea21c74692dfef20ce75cb38c"
+  },
+  {
+    "file": "reference-rfdetr/model.safetensors",
+    "sha256": "1cfe10da7c4f13453d4ebb061f73e856fbbf563ca2e09d9035e0826d7c982a5b",
+    "bytes": 134910788,
+    "url": "https://huggingface.co/stevenbucaille/rf-detr-seg-small/resolve/4e033cd357acd25ea21c74692dfef20ce75cb38c/model.safetensors",
+    "upstream": "stevenbucaille/rf-detr-seg-small",
+    "revision": "4e033cd357acd25ea21c74692dfef20ce75cb38c"
+  },
+  {
+    "file": "reference-rfdetr/preprocessor_config.json",
+    "sha256": "a05648bb440af74d30894fc60c5a32fa9adfe688c818b5e852f237cf142c93d6",
+    "bytes": 440,
+    "url": "https://huggingface.co/stevenbucaille/rf-detr-seg-small/resolve/4e033cd357acd25ea21c74692dfef20ce75cb38c/preprocessor_config.json",
+    "upstream": "stevenbucaille/rf-detr-seg-small",
+    "revision": "4e033cd357acd25ea21c74692dfef20ce75cb38c"
+  },
+  {
+    "file": "sam21/point_decoder.onnx",
+    "bytes": 16485386,
+    "sha256": "01054843041e50d2291c0a708f5f11b13d030eb648802ef6947754dfb1edb5af",
+    "upstream": "Local source export; see scripts/export-upgrade-models.py"
+  },
+  {
+    "file": "rfdetr/model.onnx",
+    "bytes": 207348,
+    "sha256": "7fb0bc8cb5fd462b5ba5215ff2611eb379b1f21013732fba579ea0c56f75162b",
+    "upstream": "Local source export; see scripts/export-upgrade-models.py"
+  },
+  {
+    "file": "rfdetr/model.onnx.data",
+    "bytes": 125348120,
+    "sha256": "cc9c5dac80e22fd42d93166ac96ffc01d5fbb922215b5c85937754a2ec7312c0",
+    "upstream": "Local source export; see scripts/export-upgrade-models.py"
+  },
+  {
+    "file": "sam21/interactive_decoder.onnx",
+    "bytes": 16491947,
+    "sha256": "6a5c67232fae0f3d5aae1ae53b37629f7842f3f6ae8d6ef95a38aa36fdc91cd7",
+    "upstream": "Local verified iterative SAM 2.1 decoder; scripts/export-interactive-decoder.py"
+  }
+]

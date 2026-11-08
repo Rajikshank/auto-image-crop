@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">ObjectLift logo</title>
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="#161A2E"/>
+  <path d="M28 44V28h16m40 0h16v16m0 40v16H84m-40 0H28V84" fill="none" stroke="#EDF0FF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M64 55 86 72 64 89 42 72Z" fill="#54DFCB"/>
+  <path d="M64 38 88 56 64 74 40 56Z" fill="#B8B6FF"/>
+</svg>

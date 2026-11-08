@@ -1,0 +1,30 @@
+[package]
+name = "objectlift"
+version = "0.4.1"
+license = "MIT"
+description = "Native Windows object cutouts with transparent and editable export"
+repository = "https://github.com/Rajikshank/auto-image-crop"
+edition = "2024"
+
+[dependencies]
+ag-psd = { version = "=0.3.0", optional = true }
+anyhow = "1.0.104"
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
+ort = { version = "=2.0.0-rc.12", default-features = false, features = ["std", "ndarray", "load-dynamic", "directml", "api-24"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+sha2 = "0.11.1"
+tempfile = "3.23"
+windows = { version = "0.61", features = ["Win32_Foundation", "Win32_Graphics_Direct3D", "Win32_Graphics_Direct3D11", "Win32_Graphics_Dxgi", "Win32_Graphics_Dxgi_Common", "Win32_Graphics_Gdi", "Win32_Graphics_Direct2D", "Win32_Graphics_Direct2D_Common", "Win32_Graphics_DirectWrite", "Win32_System_Com", "Win32_System_DataExchange", "Win32_System_Memory", "Win32_System_LibraryLoader", "Win32_UI_WindowsAndMessaging", "Win32_UI_Input_KeyboardAndMouse", "Win32_UI_HiDpi", "Win32_UI_Accessibility", "Win32_UI_Shell", "Win32_UI_Controls_Dialogs"] }
+zip = { version = "4", default-features = false }
+
+[features]
+ag-psd = ["dep:ag-psd"]
+
+[build-dependencies]
+embed-resource = "3.0.12"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "debuginfo"

@@ -1,0 +1,6 @@
+/target
+/models/
+/artifacts/
+/.tools/
+/dist/
+__pycache__/

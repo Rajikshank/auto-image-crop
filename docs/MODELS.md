@@ -1,0 +1,29 @@
+# Local model baseline and optional quality pipeline
+
+The baseline uses MobileSAM. The optional upgrade integrates RF-DETR Seg Small, SAM 2.1 Small and ViTMatte. Pinned local graphs are verified; synthetic evaluation does not establish broad real-image superiority. See `PRECISION-RESULTS.md` and historical `UPGRADE-RESULTS.md`.
+
+Encoder and decoder: [Acly/MobileSAM export](https://huggingface.co/Acly/MobileSAM/tree/0d3b403339b4674a82493d5e97964dd78089ddc8), revision `0d3b403339b4674a82493d5e97964dd78089ddc8`. Original model: [MobileSAM](https://github.com/ChaoningZhang/MobileSAM), Apache-2.0; export repository metadata says MIT. Retain both relevant notices before redistributing. These third-party exports have not yet been compared numerically against their original PyTorch checkpoint.
+
+Encoder input `input_image`: dynamic HWC RGB float32, values 0..255, longest edge resized to 1024 with rounded dimensions. The exported graph performs ImageNet normalization and right/bottom padding. Output: `[1,256,64,64]` embeddings.
+
+Decoder inputs: embeddings, resized-image point coordinates, positive/negative labels and a padding point, empty low-resolution mask, `has_mask_input=0`, and original image dimensions. Output `masks` contains original-size logits, `iou_predictions` contains model quality estimates (not calibrated success probabilities). Select ambiguous masks by correction consistency and predicted quality. Retain logits for subpixel coverage while preserving binary topology. Logits are not treated as physical opacity. Quality adds a separate matting model.
+
+Runtime: Microsoft ONNX Runtime DirectML 1.24.2 (MIT) plus DirectML 1.15.4 (Microsoft license), loaded dynamically. DirectML session creation is attempted when enabled; failure falls back to CPU. CPU can also be explicitly selected. Provider fallback during an individual failed inference is not yet automatic. Check package licenses/notices under `models/runtime` and `models/directml` before distribution.
+
+`scripts/setup-models.ps1` downloads the pinned files only on explicit invocation, verifies SHA256, and installs local runtime files. The application itself performs no network requests or hidden downloads. Model and runtime assets are ignored by Git. App startup verifies installed model integrity; the installer additionally verifies runtime package archives.
+
+Discovery samples the cursor and a 6-by-4 grid, filters near-whole-screen/empty/low-score masks, and suppresses similar candidates. It is class agnostic but can miss small objects and parts. It is not exhaustive scene understanding. Interactive prompts take priority between discovery inferences; model calls already running complete before their obsolete results are discarded.
+
+## Optional model contracts
+
+Pins and hashes: `scripts/upgrade-models.lock.json`. Local source export: `scripts/export-upgrade-models.py`. Source checkpoints load as safetensors through Transformers, with no remote code execution.
+
+SAM 2.1 vision input: NCHW RGB float32, warped 1024x1024, ImageNet mean/std. Features: [1,32,256,256], [1,64,128,128], [1,256,64,64]. Point decoder: input_points float32 [1,1,N,2], input_labels int64 [1,1,N], three image features; outputs three masks at 256x256 plus IoU estimates. Coordinate axes scale independently. The point-only decoder is retained for baseline compatibility. The new interactive decoder adds optional 256x256 native mask logits and a has-mask flag. Optional box corners use labels 2/3, matching the source prompt encoder. Source/ONNX parity covers prior/no-prior and box/no-box combinations (maximum absolute error below 0.000168). Export script: `scripts/export-interactive-decoder.py`; its graph hash is pinned in the asset lock.
+
+Interactive SAM caches one image/ROI feature set. Cache identity includes session, ROI and image content; the session fixes model/provider/preprocessing. Native logits are reused only for compatible ROI/box and prefix-preserving prompt extensions; otherwise the prior is cleared. Crop expansion invalidates context. User correction validates prompt compliance rather than requiring high agreement with the old mask. Manual alpha overrides are applied after model results and matting. Smart Remove additionally limits changes to its intended local region.
+
+RF-DETR: normalized RGB [1,3,384,384], logits [1,100,91], boxes [1,100,4], masks [1,100,96,96]. Keep candidates above sigmoid confidence .70, bounded by 24 masks and a 64 MB full-frame proposal budget, then deduplicate. Boxes/classes do not exclude unknown objects: MobileSAM grid and direct point selection remain available. Native ONNX Runtime 1.24.2 CPU succeeds; DirectML initialization failed for this exported graph, so discovery explicitly uses CPU.
+
+ViTMatte: RGB normalized to [-1,1] plus trimap/255 as the fourth channel; pad right/bottom to multiples of 32. Alpha output [1,1,H,W] is cropped to native dimensions. Known foreground/background values stay exact; only a six-pixel adaptive boundary/thin-structure band is unknown. Overlapping tiles up to 1024 pixels with 64-pixel overlap bound each inference, and a 16-megapixel region budget bounds total work. Edge-brush trimaps follow the stroke; alpha outside the painted region remains unchanged, including fractional alpha. Cancellation is checked between tiles. Color recovery uses bounded neighboring foreground/background estimates with regularized inversion; it leaves opaque pixels unchanged.
+
+Models execute serially on the worker. One pending capture and one latest prompt bound the request queue. Mode changes and session revisions invalidate obsolete results before export. Cancellation is checked between calls; an in-flight ONNX call itself is not preempted. Optional model session failures are explicit; baseline MobileSAM retains its reported CPU fallback.
